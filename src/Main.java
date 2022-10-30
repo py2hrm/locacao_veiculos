@@ -1,5 +1,7 @@
 import br.com.dio.desafio.dominio.*;
 
+import java.time.LocalDateTime;
+
 import static br.com.dio.desafio.dominio.TipoCombustivel.*;
 
 public class Main {
@@ -73,7 +75,43 @@ public class Main {
         LojaLocadora loja2 = new LojaLocadora( 2L, "Shopping Eldorado", 05592123d,"SAO PAULO", UF.SP, Boolean.TRUE  );
         System.out.println(loja2);
 
-        LocacaoVeiculo locacaoCarro1 = new LocacaoVeiculo();
+        System.out.println("--------------");
+        System.out.println("Instanciando locacao de veiculos...");
+
+        System.out.println("--------------");
+        System.out.println("checando se CNH locatario habilita alugar veiculo ...");
+
+
+        LocacaoVeiculo locacaoVeiculo1 = new LocacaoVeiculo();
+        locacaoVeiculo1.setLocatario(locatario1);
+        locacaoVeiculo1.setVeiculo(veiculo3);
+        locacaoVeiculo1.setNumContratoLocacao(1L);
+        locacaoVeiculo1.setidLojaLocadora(1L);
+        locacaoVeiculo1.setDataHoraMinInicio(LocalDateTime.now());
+        locacaoVeiculo1.setDataHoraMinFimCombinada(LocalDateTime.now().plusDays(4));
+        locacaoVeiculo1.setDataHoraMinFimEfetiva(LocalDateTime.now().plusDays(5));
+        locacaoVeiculo1.setDiariasIncorridas(5L);
+        locacaoVeiculo1.setStatusLocacao(StatusesContratoLocacao.PENDENTE_PAGAMENTO);
+        locacaoVeiculo1.setValorDiaria(257d);
+
+        System.out.println("Categoria CNH locatario: " + locacaoVeiculo1.getLocatario().getCategoriaCNHLocatario() );
+        System.out.println("categoria CNH requerida: " + veiculo3.getCategoriaCNHRequerida());
+
+        Integer categoriaLocatario = locacaoVeiculo1.getLocatario().getCategoriaCNHLocatario().ordinal();
+        System.out.println( categoriaLocatario );;
+
+        Integer categoriaVeiculo = veiculo3.getCategoriaCNHRequerida().ordinal();
+        System.out.println( categoriaVeiculo );;
+
+        if ( categoriaLocatario < categoriaVeiculo ) {
+            System.out.println("categoria do locatario nao permite alugar este veiculo ");
+        }
+
+
+
+
+
+
 
 
     }

@@ -4,22 +4,35 @@ import java.time.LocalDateTime;
 
 public class LocacaoVeiculo {
     private Long numContratoLocacao;
-    private Long cpfLocatario;
-    private String idContratoLocacao;
+    private long idLojaLocadora;
     private LocalDateTime dataHoraMinInicio;
     private LocalDateTime dataHoraMinFimCombinada;
     private LocalDateTime dataHoraMinFimEfetiva;
     private Long diariasIncorridas;
-    private String statusLocacao;
+    private StatusesContratoLocacao statusLocacao;
 
     private Locatario locatario;
     private Veiculo veiculo;
     private Double valorDiaria;
 
-    // statusLocacao : // CRIADO, [CANCELADO -> <FIM>/VIGENTE -> ...],
-    // ... DEVOLVIDO, EM VISTORIA ,  VISTORIADO [COM RESSALVA / SEM RESSALVA],
-    // [PAGO -> COMPLETADO ] / [ PENDENTE -> PROTESTADO ,[ ACORDO -> COMPLETADO[] / LITIGIO ]
-
+    public LocacaoVeiculo() {
+    }
+    public LocacaoVeiculo(Long numContratoLocacao, long idLojaLocadora,
+                          LocalDateTime dataHoraMinInicio, LocalDateTime dataHoraMinFimCombinada,
+                          LocalDateTime dataHoraMinFimEfetiva, Long diariasIncorridas,
+                          StatusesContratoLocacao statusLocacao, Locatario locatario, Veiculo veiculo,
+                          Double valorDiaria) {
+        this.numContratoLocacao = numContratoLocacao;
+        this.idLojaLocadora = idLojaLocadora;
+        this.dataHoraMinInicio = dataHoraMinInicio;
+        this.dataHoraMinFimCombinada = dataHoraMinFimCombinada;
+        this.dataHoraMinFimEfetiva = dataHoraMinFimEfetiva;
+        this.diariasIncorridas = diariasIncorridas;
+        this.statusLocacao = statusLocacao;
+        this.locatario = locatario;
+        this.veiculo = veiculo;
+        this.valorDiaria = valorDiaria;
+    }
 
     public Long getNumContratoLocacao() {
         return numContratoLocacao;
@@ -29,20 +42,12 @@ public class LocacaoVeiculo {
         this.numContratoLocacao = numContratoLocacao;
     }
 
-    public Long getCpfLocatario() {
-        return cpfLocatario;
+    public long getIdContratoLocacao() {
+        return idLojaLocadora;
     }
 
-    public void setCpfLocatario(Long cpfLocatario) {
-        this.cpfLocatario = cpfLocatario;
-    }
-
-    public String getIdContratoLocacao() {
-        return idContratoLocacao;
-    }
-
-    public void setIdContratoLocacao(String idContratoLocacao) {
-        this.idContratoLocacao = idContratoLocacao;
+    public void setidLojaLocadora(long idLojaLocadora) {
+        this.idLojaLocadora = idLojaLocadora;
     }
 
     public LocalDateTime getDataHoraMinInicio() {
@@ -77,11 +82,11 @@ public class LocacaoVeiculo {
         this.diariasIncorridas = diariasIncorridas;
     }
 
-    public String getStatusLocacao() {
+    public StatusesContratoLocacao getStatusLocacao() {
         return statusLocacao;
     }
 
-    public void setStatusLocacao(String statusLocacao) {
+    public void setStatusLocacao(StatusesContratoLocacao statusLocacao) {
         this.statusLocacao = statusLocacao;
     }
 
@@ -97,7 +102,9 @@ public class LocacaoVeiculo {
         return veiculo;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
+    public void setVeiculo(VeiculoUtilitario veiculo3) {
+
+
         this.veiculo = veiculo;
     }
 
@@ -113,17 +120,17 @@ public class LocacaoVeiculo {
     public String toString() {
         return "LocacaoVeiculo{" +
                 "numContratoLocacao=" + numContratoLocacao +
-                ", cpfLocatario=" + cpfLocatario +
-                ", idContratoLocacao='" + idContratoLocacao + '\'' +
+                ", idContratoLocacao='" + idLojaLocadora + '\'' +
                 ", dataHoraMinInicio=" + dataHoraMinInicio +
                 ", dataHoraMinFimCombinada=" + dataHoraMinFimCombinada +
                 ", dataHoraMinFimEfetiva=" + dataHoraMinFimEfetiva +
                 ", diariasIncorridas=" + diariasIncorridas +
-                ", statusLocacao='" + statusLocacao + '\'' +
+                ", statusLocacao=" + statusLocacao +
                 ", locatario=" + locatario +
                 ", veiculo=" + veiculo +
                 ", valorDiaria=" + valorDiaria +
                 '}';
     }
+
 }
 
